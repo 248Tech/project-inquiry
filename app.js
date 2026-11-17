@@ -17,7 +17,7 @@
   $("#yr").textContent = new Date().getFullYear();
 
   // ---- rotating headline word -------------------------------------------
-  const words = ["something good", "your web app", "that internal tool", "the AI thing", "your idea"];
+  const words = ["something good", "your website", "your web app", "that internal tool", "the AI thing", "your idea"];
   const rot = $("#rotator");
   let wi = 0;
   if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -33,6 +33,7 @@
     return {
       type: fd.get("type") || "",
       features: fd.getAll("features"),
+      pages: fd.get("pages") || "",
       budget: fd.get("budget") || "",
       timeline: fd.get("timeline") || "",
       details: (fd.get("details") || "").trim(),
@@ -52,6 +53,7 @@
     `Email:    ${d.email}`,
     `Type:     ${d.type}`,
     `Features: ${d.features.join(", ") || "—"}`,
+    d.pages ? `Pages:    ${d.pages}` : null,
     `Budget:   ${d.budget}`,
     `Timeline: ${d.timeline}`,
     d.links ? `Links:    ${d.links}` : null,
@@ -156,9 +158,20 @@
     updateBrief();
     if (e.target.name) showErr(e.target.name, false);
   });
+  // website-only questions: shown when "Website build" is picked, cleared otherwise
+  const webOnly = $(".web-only", form);
+  const syncWeb = () => {
+    const on = data().type === "Website build";
+    webOnly.hidden = !on;
+    if (!on) $("input", webOnly).forEach((i) => (i.checked = false));
+  };
   // auto-advance after choosing a project type
   form.addEventListener("change", (e) => {
-    if (e.target.name === "type" && cur === 0) setTimeout(() => go(1), 260);
+    if (e.target.name === "type") { syncWeb(); updateBrief(); }
+  });
+  // advance on click (not change) so re-picking a tile restored from a draft still moves on
+  form.addEventListener("click", (e) => {
+    if (e.target.name === "type" && cur === 0) setTimeout(() => cur === 0 && go(1), 260);
   });
   form.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && e.target.tagName !== "TEXTAREA" && cur <= LAST) { e.preventDefault(); next.click(); }
@@ -231,7 +244,7 @@
     setTimeout(() => (e.target.textContent = "Copy my brief"), 2000);
   });
   $("#again").addEventListener("click", () => {
-    form.reset(); clearDraft(); form.classList.remove("sent"); updateBrief(); go(0, -1);
+    form.reset(); clearDraft(); syncWeb(); form.classList.remove("sent"); updateBrief(); go(0, -1);
   });
 
   // ---- background: drifting node network ----------------------------------
@@ -293,5 +306,6 @@
     }
   }
 
+  syncWeb();
   updateBrief();
 })();

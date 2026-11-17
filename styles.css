@@ -161,3 +161,4 @@ h1{padding-bottom:.04em}
   .tile small{display:none}
   .status{display:none}
 }
+.web-only:not([hidden])+.label{margin-top:22px}

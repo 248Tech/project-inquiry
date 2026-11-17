@@ -50,7 +50,7 @@
       <legend>What are we building?</legend>
       <div class="tiles" role="radiogroup">
         <label class="tile"><input type="radio" name="type" value="Web app" required><span class="ic">◧</span><b>Web app</b><small>Dashboards, portals, SaaS</small></label>
-        <label class="tile"><input type="radio" name="type" value="Website"><span class="ic">◎</span><b>Website</b><small>Marketing, landing, docs</small></label>
+        <label class="tile"><input type="radio" name="type" value="Website build"><span class="ic">◎</span><b>Website build</b><small>New sites, redesigns, landing pages</small></label>
         <label class="tile"><input type="radio" name="type" value="Desktop app"><span class="ic">▣</span><b>Desktop app</b><small>Windows, macOS, Linux</small></label>
         <label class="tile"><input type="radio" name="type" value="AI / automation"><span class="ic">✦</span><b>AI / automation</b><small>Local LLMs, bots, pipelines</small></label>
         <label class="tile"><input type="radio" name="type" value="Self-hosted tool"><span class="ic">⌂</span><b>Self-hosted tool</b><small>Servers, admin panels</small></label>
@@ -62,6 +62,27 @@
     <!-- Step 2 -->
     <fieldset class="step" data-step="1">
       <legend>How big is it?</legend>
+      <div class="web-only" hidden>
+        <p class="label">Website needs <span class="opt">(any)</span></p>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="features" value="Custom design"><span>Custom design</span></label>
+          <label class="chip"><input type="checkbox" name="features" value="Redesign of existing site"><span>Redesign existing site</span></label>
+          <label class="chip"><input type="checkbox" name="features" value="Editable content (CMS)"><span>Edit it myself (CMS)</span></label>
+          <label class="chip"><input type="checkbox" name="features" value="SEO setup"><span>SEO setup</span></label>
+          <label class="chip"><input type="checkbox" name="features" value="Online store"><span>Online store</span></label>
+          <label class="chip"><input type="checkbox" name="features" value="Booking / quote forms"><span>Booking / quote forms</span></label>
+          <label class="chip"><input type="checkbox" name="features" value="Hosting &amp; domain setup"><span>Hosting &amp; domain</span></label>
+          <label class="chip"><input type="checkbox" name="features" value="Blog / news"><span>Blog / news</span></label>
+        </div>
+        <p class="label">Roughly how many pages?</p>
+        <div class="seg" role="radiogroup">
+          <label><input type="radio" name="pages" value="1 page"><span>1 page</span></label>
+          <label><input type="radio" name="pages" value="2–5 pages"><span>2–5</span></label>
+          <label><input type="radio" name="pages" value="6–15 pages"><span>6–15</span></label>
+          <label><input type="radio" name="pages" value="15+ pages"><span>15+</span></label>
+        </div>
+      </div>
+
       <p class="label">Features you need <span class="opt">(any)</span></p>
       <div class="chips">
         <label class="chip"><input type="checkbox" name="features" value="User accounts"><span>User accounts</span></label>
