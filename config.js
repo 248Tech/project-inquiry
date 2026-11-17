@@ -11,7 +11,7 @@
 window.INQUIRY_CONFIG = {
   endpoint: "",
   accessKey: "",
-  email: "",
+  email: "joe@248tech.com",
   brand: "248Tech",
   site: "https://248tech.github.io/",
 };
