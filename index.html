@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start a Project | 248Tech</title>
+<meta name="description" content="Tell 248Tech about the software you want built. A short, guided brief: what, how big, when, and how to reach you.">
+<meta name="theme-color" content="#0a0c10">
+<meta property="og:title" content="Start a Project | 248Tech">
+<meta property="og:description" content="A short, guided brief for getting custom software built.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<header class="top wrap">
+  <a class="brand" href="https://248tech.github.io/"><span class="logo">248</span>Tech</a>
+  <span class="status"><span class="dot"></span>Taking new projects</span>
+</header>
+
+<main class="wrap shell">
+  <section class="intro">
+    <p class="eyebrow">Project inquiry</p>
+    <h1>Let's build <span class="grad" id="rotator">something good</span>.</h1>
+    <p class="lede">Four quick steps. You'll get a reply with questions, a rough plan and a ballpark, usually within two business days.</p>
+
+    <aside class="brief" aria-label="Your brief so far">
+      <div class="brief-head">
+        <span>Your brief</span>
+        <span class="meter"><span id="meter-fill"></span></span>
+      </div>
+      <dl id="brief-list">
+        <div><dt>Type</dt><dd data-k="type">—</dd></div>
+        <div><dt>Features</dt><dd data-k="features">—</dd></div>
+        <div><dt>Budget</dt><dd data-k="budget">—</dd></div>
+        <div><dt>Timeline</dt><dd data-k="timeline">—</dd></div>
+        <div><dt>From</dt><dd data-k="name">—</dd></div>
+      </dl>
+    </aside>
+  </section>
+
+  <form class="card" id="form" novalidate>
+    <ol class="steps" aria-label="Progress">
+      <li class="on">What</li><li>Scope</li><li>Details</li><li>You</li>
+    </ol>
+
+    <!-- Step 1 -->
+    <fieldset class="step on" data-step="0">
+      <legend>What are we building?</legend>
+      <div class="tiles" role="radiogroup">
+        <label class="tile"><input type="radio" name="type" value="Web app" required><span class="ic">◧</span><b>Web app</b><small>Dashboards, portals, SaaS</small></label>
+        <label class="tile"><input type="radio" name="type" value="Website"><span class="ic">◎</span><b>Website</b><small>Marketing, landing, docs</small></label>
+        <label class="tile"><input type="radio" name="type" value="Desktop app"><span class="ic">▣</span><b>Desktop app</b><small>Windows, macOS, Linux</small></label>
+        <label class="tile"><input type="radio" name="type" value="AI / automation"><span class="ic">✦</span><b>AI / automation</b><small>Local LLMs, bots, pipelines</small></label>
+        <label class="tile"><input type="radio" name="type" value="Self-hosted tool"><span class="ic">⌂</span><b>Self-hosted tool</b><small>Servers, admin panels</small></label>
+        <label class="tile"><input type="radio" name="type" value="Something else"><span class="ic">?</span><b>Something else</b><small>Surprise me</small></label>
+      </div>
+      <p class="err" data-for="type">Pick the closest match. You can explain later.</p>
+    </fieldset>
+
+    <!-- Step 2 -->
+    <fieldset class="step" data-step="1">
+      <legend>How big is it?</legend>
+      <p class="label">Features you need <span class="opt">(any)</span></p>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="features" value="User accounts"><span>User accounts</span></label>
+        <label class="chip"><input type="checkbox" name="features" value="Payments"><span>Payments</span></label>
+        <label class="chip"><input type="checkbox" name="features" value="Admin panel"><span>Admin panel</span></label>
+        <label class="chip"><input type="checkbox" name="features" value="AI features"><span>AI features</span></label>
+        <label class="chip"><input type="checkbox" name="features" value="Maps / GIS"><span>Maps / GIS</span></label>
+        <label class="chip"><input type="checkbox" name="features" value="Integrations / API"><span>Integrations / API</span></label>
+        <label class="chip"><input type="checkbox" name="features" value="Realtime"><span>Realtime</span></label>
+        <label class="chip"><input type="checkbox" name="features" value="Mobile-friendly"><span>Mobile-friendly</span></label>
+      </div>
+
+      <p class="label">Budget</p>
+      <div class="seg" role="radiogroup">
+        <label><input type="radio" name="budget" value="Under $2k" required><span>&lt; $2k</span></label>
+        <label><input type="radio" name="budget" value="$2k–$5k"><span>$2k–5k</span></label>
+        <label><input type="radio" name="budget" value="$5k–$15k"><span>$5k–15k</span></label>
+        <label><input type="radio" name="budget" value="$15k+"><span>$15k+</span></label>
+        <label><input type="radio" name="budget" value="Not sure yet"><span>Not sure</span></label>
+      </div>
+      <p class="err" data-for="budget">A rough range helps me suggest the right scope.</p>
+
+      <p class="label">Timeline</p>
+      <div class="seg" role="radiogroup">
+        <label><input type="radio" name="timeline" value="ASAP" required><span>ASAP</span></label>
+        <label><input type="radio" name="timeline" value="1–3 months"><span>1–3 mo</span></label>
+        <label><input type="radio" name="timeline" value="3–6 months"><span>3–6 mo</span></label>
+        <label><input type="radio" name="timeline" value="Flexible"><span>Flexible</span></label>
+      </div>
+      <p class="err" data-for="timeline">When would you like it done?</p>
+    </fieldset>
+
+    <!-- Step 3 -->
+    <fieldset class="step" data-step="2">
+      <legend>Tell me about it</legend>
+      <label class="field">
+        <span>What should it do, and who is it for?</span>
+        <textarea name="details" rows="7" maxlength="4000" minlength="20" required placeholder="e.g. An internal tool where our crew leads log jobs from a tablet and the office sees it live on a map…"></textarea>
+        <span class="count"><span id="count">0</span> / 4000</span>
+      </label>
+      <p class="err" data-for="details">A couple of sentences is plenty (20+ characters).</p>
+      <label class="field">
+        <span>Links <span class="opt">(existing site, mockups, examples you like)</span></span>
+        <input name="links" type="text" placeholder="https://…">
+      </label>
+    </fieldset>
+
+    <!-- Step 4 -->
+    <fieldset class="step" data-step="3">
+      <legend>How do I reach you?</legend>
+      <div class="row">
+        <label class="field"><span>Name</span><input name="name" type="text" autocomplete="name" required></label>
+        <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+      </div>
+      <p class="err" data-for="name">Your name, please.</p>
+      <p class="err" data-for="email">That email doesn't look right.</p>
+      <label class="field"><span>Company <span class="opt">(optional)</span></span><input name="company" type="text" autocomplete="organization"></label>
+      <label class="field"><span>How did you find me? <span class="opt">(optional)</span></span><input name="source" type="text"></label>
+      <!-- honeypot: humans never see this -->
+      <label class="hp" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+    </fieldset>
+
+    <!-- Done -->
+    <div class="step done" data-step="4" tabindex="-1">
+      <div class="check"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-15"/></svg></div>
+      <h2 id="done-title">Brief sent.</h2>
+      <p id="done-msg">Thanks! I'll read it properly and get back to you soon.</p>
+      <div class="done-actions">
+        <button type="button" class="btn" id="copy">Copy my brief</button>
+        <button type="button" class="btn ghost" id="again">Start another</button>
+      </div>
+    </div>
+
+    <div class="nav" id="nav">
+      <button type="button" class="btn ghost" id="back" hidden>← Back</button>
+      <span class="hint" id="hint">Press <kbd>Enter</kbd> to continue</span>
+      <button type="button" class="btn primary" id="next">Continue →</button>
+    </div>
+  </form>
+</main>
+
+<footer class="wrap foot">
+  <span>© <span id="yr"></span> 248Tech</span>
+  <a href="https://github.com/248Tech/project-inquiry" rel="noopener">Source on GitHub</a>
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
